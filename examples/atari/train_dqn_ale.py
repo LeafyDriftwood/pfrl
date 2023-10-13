@@ -10,7 +10,8 @@ from pfrl import nn as pnn
 from pfrl import replay_buffers, utils
 from pfrl.initializers import init_chainer_default
 from pfrl.q_functions import DiscreteActionValueHead, DuelingDQN
-from pfrl.wrappers import atari_wrappers
+#from pfrl.wrappers import atari_wrappers
+import n_atari_wrappers as atari_wrappers
 import n_randomize_action
 
 
