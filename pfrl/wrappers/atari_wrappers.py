@@ -38,9 +38,9 @@ class NoopResetEnv(gym.Wrapper):
         if self.override_num_noops is not None:
             noops = self.override_num_noops
         else:
-            try:
+            if version.parse(gym.__version__) >= version.parse("0.24.0"):
                 noops = self.unwrapped.np_random.integers(1, self.noop_max + 1)
-            except AttributeError:
+            else:
                 noops = self.unwrapped.np_random.randint(1, self.noop_max + 1)
         assert noops > 0
         obs = None
