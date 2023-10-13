@@ -11,6 +11,7 @@ from pfrl import replay_buffers, utils
 from pfrl.initializers import init_chainer_default
 from pfrl.q_functions import DiscreteActionValueHead, DuelingDQN
 from pfrl.wrappers import atari_wrappers
+import n_randomize_action
 
 
 class SingleSharedBias(nn.Module):
@@ -212,7 +213,7 @@ def main():
         env.seed(int(env_seed))
         if test:
             # Randomize actions like epsilon-greedy in evaluation as well
-            env = pfrl.wrappers.RandomizeAction(env, args.eval_epsilon)
+            env = n_randomize_action.RandomizeAction(env, args.eval_epsilon)
         if args.monitor:
             env = pfrl.wrappers.Monitor(
                 env, args.outdir, mode="evaluation" if test else "training"
